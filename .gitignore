@@ -1,0 +1,12 @@
+# Java binaries
+/bin/
+/*.class
+
+# VS Code workspace settings
+.vscode/
+
+# DLLs and native libs (optional to keep them local)
+natives/
+
+# Large model files (optional)
+models/*.onnx
