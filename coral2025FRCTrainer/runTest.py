@@ -18,12 +18,12 @@ Current Models:
     Changes: Evolved VER2 with more epochs, increased image size to 612
     Grade: TBD - Training
 '''
-model = YOLO("runs/train/coral_modelVER2/weights/best.pt")
+model = YOLO("runs/train/coral_modelVER3/weights/best.pt")
 
 results = model(
-    "dataset/images/val/",
+    "dataset/images/train",
     save=True,
-    project="coral_modelVER2_detect",  # your custom folder
+    project="coral_modelVER3_detect",  # your custom folder
     name="predict02",                    # subfolder name
     exist_ok=True                      # prevents YOLO from adding numbers
 )
