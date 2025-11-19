@@ -9,14 +9,14 @@ Current Models:
 - coral_modelVER2:
     Path: runs/train/coral_modelVER2/weights/best.pt
     Epochs Trained: 100
-    Grade: TBD - Training
+    Grade: Good performance but can be improved in most areas
 '''
-model = YOLO("runs/train/coral_modelVER1/weights/best.pt")
+model = YOLO("runs/train/coral_modelVER2/weights/best.pt")
 
 results = model(
     "dataset/images/val/",
     save=True,
-    project="coral_modelVER1_detect",  # your custom folder
+    project="coral_modelVER2_detect",  # your custom folder
     name="predict02",                    # subfolder name
     exist_ok=True                      # prevents YOLO from adding numbers
 )
