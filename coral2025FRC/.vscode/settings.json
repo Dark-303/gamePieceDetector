@@ -1,0 +1,8 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/opencv-4120.jar",
+        "lib/onnxruntime-1.23.2.jar"
+    ]
+}
