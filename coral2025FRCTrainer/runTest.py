@@ -23,15 +23,25 @@ coral_modelVER1:
         Path: runs/train/coral_modelVER1/coral_modelVER1.1/weights/best.pt
         Epochs Trained: 300
         Changes: Retrained from scratch with 300 epochs, image size 612, added multiple detections
-        Grade: Good performance, could use some more work with >1 corals, live testing needed for validation
+        Grade: Good performance, could use some more work with >1 corals, ok detection live
+    - coral_modelVER1.2:
+        Path: runs/train/coral_modelVER1/coral_modelVER1.2/weights/best.pt
+        Epochs Trained: 150
+        Changes: Retrained from scratch with 150 epochs, added nulls from art room
+        Grade: Fairly accurate, detects most corals, struggles with chair legs
+    - coral_modelVER1.3:
+        Path: runs/train/coral_modelVER1/coral_modelVER1.3/weights/best.pt
+        Epochs: Trained: 450
+        Changes: Evolved VER1.1, added nulls from art room
+        Grade: Very good performance, detects multiple corals well, minor issues with false positives
 '''
-model = YOLO("runs/train/coral_modelVER1/coral_modelVER1.1/weights/best.pt")
+model = YOLO("runs/train/coral_modelVER1/coral_modelVER1.2/weights/best.pt")
 
 results = model(
     "dataset/images/val",
     save=True,
-    project="tests/coral_modelVER1/coral_modelVER1.1_detect",  # your custom folder
-    name="predict03",                    # subfolder name
+    project="tests/coral_modelVER1/coral_modelVER1.2_detect",  # your custom folder
+    name="predict01",                    # subfolder name
     exist_ok=True                      # prevents YOLO from adding numbers
 )
 
