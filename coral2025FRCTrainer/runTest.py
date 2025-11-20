@@ -18,13 +18,13 @@ Current Models:
     Changes: Evolved VER2 with more epochs, increased image size to 612
     Grade: Fairly accurate, cannot detect verticals and certain angles
 '''
-model = YOLO("versions/coral_modelVER0.3.pt")
+model = YOLO("runs/train/coral_modelVER1/coral_modelVER1.1/weights/best.pt")
 
 results = model(
-    "dataset/images/train",
+    "dataset/images/val",
     save=True,
-    project="tests/coral_modelVER0/coral_modelVER0.3_detect",  # your custom folder
-    name="predict02",                    # subfolder name
+    project="tests/coral_modelVER1/coral_modelVER1.1_detect",  # your custom folder
+    name="predict01",                    # subfolder name
     exist_ok=True                      # prevents YOLO from adding numbers
 )
 
