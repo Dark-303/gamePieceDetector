@@ -4,7 +4,7 @@ YOLOv5 models trained on reefscape coral images. If you need .onnx files use [co
 
 This project uses **openCV** and **Ultralytics**.
 
-### coral2025FRCTrainer is no longer being developed and there is no java implementation
+**coral2025FRCTrainer is no longer being developed and there is no java implementation**
 
 ## Dowloads
 | Version | Download Link | Training Info | Notes |
