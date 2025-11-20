@@ -4,7 +4,7 @@ from ultralytics import YOLO
 #model = YOLO("yolov5nu.pt")  # or yolov5nu.onnx if using ONNX as starting point
 
 # Evolve model from an existing trained model
-model = YOLO("yolsov5n.pt")
+model = YOLO("yolov5n.pt")
 
 # Train the model
 model.train(
