@@ -1,16 +1,15 @@
 import cv2
 from ultralytics import YOLO
-import numpy as np
 
-# Load your trained model
-model = YOLO("runs/train/coral_modelVER1/coral_modelVER1.1/weights/best.pt")
+# Model path
+model = YOLO("versions/coral_modelVER1.3/coral_modelVER1.3.pt")
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
 THRESHOLD = True
-CONFIDENCE_THRESHOLD = 0.60  # 20% confidence
+CONFIDENCE_THRESHOLD = 0.60  # Adjust based on model performance
 
 while True:
     ret, frame = cap.read()
@@ -20,11 +19,11 @@ while True:
     # Run inference
     results = model(frame)[0]
 
-    # Filter boxes by confidence
+    # Filter boxes by confidence threshold
     if THRESHOLD:
         if results.boxes is not None and len(results.boxes) > 0:
             mask = results.boxes.conf >= CONFIDENCE_THRESHOLD
-            results.boxes = results.boxes[mask]  # only keep boxes >= threshold
+            results.boxes = results.boxes[mask]  # Only keep boxes >= threshold
 
     # Visualize
     annotated_frame = results.plot()

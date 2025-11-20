@@ -1,7 +1,9 @@
 import threading
 from trainer import Trainer
 
-# Create trainer instances
+# Coral Detector has been discontinued. Use multiprocessing instead to load graphs.
+
+# Create instances of Trainer for each model
 trainer1 = Trainer("yolov5nu.pt")
 trainer2 = Trainer("runs/train/coral_modelVER1/coral_modelVER1.1/weights/best.pt")
 
@@ -9,7 +11,7 @@ trainer2 = Trainer("runs/train/coral_modelVER1/coral_modelVER1.1/weights/best.pt
 thread1 = threading.Thread(target=trainer1.train_model, args=(1, 2, 150, 612)) # Train from scratch
 thread2 = threading.Thread(target=trainer2.train_model, args=(1, 3, 150, 612)) # Evolve from VER1.1
 
-# Start
+# Start threads
 thread1.start()
 thread2.start()
 
