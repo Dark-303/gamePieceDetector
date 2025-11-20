@@ -2,26 +2,28 @@ from ultralytics import YOLO
 
 '''
 Current Models:
-- coral_modelVER0.1: 
-    Path: runs/train/coral_modelVER0/coral_modelVER1/weights/best.pt
-    Epochs Trained: 50
-    Changes: N/A
-    Grade: Satisfactory for initial testing
-- coral_modelVER0.2:
-    Path: runs/train/coral_modelVER0/coral_modelVER2/weights/best.pt
-    Epochs Trained: 100
-    Changes: Increased epochs
-    Grade: Good performance but can be improved in most areas
-- coral_modelVER0.3:
-    Path: versions/coral_modelVER0.3.pt
-    Epochs Trained: 200
-    Changes: Evolved VER2 with more epochs, increased image size to 612
-    Grade: Fairly accurate, cannot detect verticals and certain angles
-- coral_modelVER1.1:
-    Path: runs/train/coral_modelVER1/coral_modelVER1.1/weights/best.pt
-    Epochs Trained: 300
-    Changes: Retrained from scratch with 300 epochs, image size 612, added multiple detections
-    Grade: Good performance, live testing needed for validation
+coral_modelVER0:
+    - coral_modelVER0.1: 
+        Path: runs/train/coral_modelVER0/coral_modelVER1/weights/best.pt
+        Epochs Trained: 50
+        Changes: N/A
+        Grade: Satisfactory for initial testing
+    - coral_modelVER0.2:
+        Path: runs/train/coral_modelVER0/coral_modelVER2/weights/best.pt
+        Epochs Trained: 100
+        Changes: Increased epochs
+        Grade: Good performance but can be improved in most areas
+    - coral_modelVER0.3:
+        Path: versions/coral_modelVER0.3.pt
+        Epochs Trained: 200
+        Changes: Evolved VER2 with more epochs, increased image size to 612
+        Grade: Fairly accurate, cannot detect verticals and certain angles
+coral_modelVER1:
+    - coral_modelVER1.1:
+        Path: runs/train/coral_modelVER1/coral_modelVER1.1/weights/best.pt
+        Epochs Trained: 300
+        Changes: Retrained from scratch with 300 epochs, image size 612, added multiple detections
+        Grade: Good performance, could use some more work with >1 corals, live testing needed for validation
 '''
 model = YOLO("runs/train/coral_modelVER1/coral_modelVER1.1/weights/best.pt")
 
@@ -29,7 +31,7 @@ results = model(
     "dataset/images/val",
     save=True,
     project="tests/coral_modelVER1/coral_modelVER1.1_detect",  # your custom folder
-    name="predict01",                    # subfolder name
+    name="predict03",                    # subfolder name
     exist_ok=True                      # prevents YOLO from adding numbers
 )
 
