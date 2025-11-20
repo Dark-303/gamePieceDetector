@@ -17,6 +17,11 @@ Current Models:
     Epochs Trained: 200
     Changes: Evolved VER2 with more epochs, increased image size to 612
     Grade: Fairly accurate, cannot detect verticals and certain angles
+- coral_modelVER1.1:
+    Path: runs/train/coral_modelVER1/coral_modelVER1.1/weights/best.pt
+    Epochs Trained: 300
+    Changes: Retrained from scratch with 300 epochs, image size 612, added multiple detections
+    Grade: Good performance, live testing needed for validation
 '''
 model = YOLO("runs/train/coral_modelVER1/coral_modelVER1.1/weights/best.pt")
 
