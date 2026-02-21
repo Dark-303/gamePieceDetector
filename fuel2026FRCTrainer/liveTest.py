@@ -2,7 +2,7 @@ import cv2
 from ultralytics import YOLO
 
 # Model path
-model = YOLO("versions/coral_modelVER1.3/coral_modelVER1.3.pt")
+model = YOLO("runs/train/fuel_modelVER1/fuel_modelVER1.0/weights/best.pt")
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)

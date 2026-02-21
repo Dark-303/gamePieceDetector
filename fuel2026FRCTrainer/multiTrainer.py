@@ -1,22 +1,32 @@
-import threading
+import multiprocessing
 from trainer import Trainer
 
-# Coral Detector has been discontinued. Use multiprocessing instead to load graphs.
+# 1. We need a helper function that can be "pickled" (serialized) 
+# to be sent to a different CPU process.
+def run_training(model_path, version, subversion, epochs, img_size):
+    trainer = Trainer(model_path)
+    trainer.train_model(version, subversion, epochs, img_size)
 
-# Create instances of Trainer for each model
-trainer1 = Trainer("yolov5nu.pt")
-trainer2 = Trainer("runs/train/coral_modelVER1/coral_modelVER1.1/weights/best.pt")
+if __name__ == "__main__":
+    # 2. Define your training configurations
+    # Trainer 1: From scratch
+    args1 = ("yolov5nu.pt", 1, 2, 150, 612)
+    
+    # Trainer 2: Evolving from VER 1.1
+    args2 = ("runs/train/coral_modelVER1/coral_modelVER1.1/weights/best.pt", 1, 3, 150, 612)
 
-# Set up threads
-thread1 = threading.Thread(target=trainer1.train_model, args=(1, 2, 150, 612)) # Train from scratch
-thread2 = threading.Thread(target=trainer2.train_model, args=(1, 3, 150, 612)) # Evolve from VER1.1
+    # 3. Create the Processes
+    process1 = multiprocessing.Process(target=run_training, args=args1)
+    process2 = multiprocessing.Process(target=run_training, args=args2)
 
-# Start threads
-thread1.start()
-thread2.start()
+    print("Starting parallel training sessions...")
+    
+    # 4. Start them at the same time
+    process1.start()
+    process2.start()
 
-# Wait for both to finish
-thread1.join()
-thread2.join()
+    # 5. Wait for both to finish
+    process1.join()
+    process2.join()
 
-print("Both trainings complete!")
+    print("Both trainings are complete and saved separately!")
