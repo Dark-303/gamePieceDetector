@@ -4,5 +4,5 @@ from ultralytics import YOLO
 model = YOLO("versions/fuel_modelVER1.0/fuel_modelVER1.0.pt")
 
 # Export to ONNX
-model.export(format='tflite', imgsz=640, int8=True)
+model.export(format='tflite', imgsz=320, int8=True, nms=True)
 print("tflite export complete!")
